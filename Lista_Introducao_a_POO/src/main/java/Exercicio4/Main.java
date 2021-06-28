@@ -21,9 +21,9 @@ public class Main {
         casa.portas[1].fecharPorta();
         casa.portas[2].abrirPorta();
         
-        casa.Pintar("Azul");
+        casa.pintar("Azul");
         
-        casa.Pintar("Verde");
+        casa.pintar("Verde");
         casa.quantasPortasEstaoAbertas();
     }
 }

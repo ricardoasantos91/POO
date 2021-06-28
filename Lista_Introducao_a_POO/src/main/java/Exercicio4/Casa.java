@@ -39,7 +39,7 @@ public class Casa {
         System.out.println(n + " porta(s) esta(ao) aberta(s)");
     }
     
-    void Pintar(String corPintura){
+    void pintar(String corPintura){
         cor = corPintura;
     }
     
