@@ -63,6 +63,7 @@ public class Baralho {
             
             cartaSwap(c1,c2);
         }
+        System.out.println("Baralho foi embaralhado.");
     }
     
     void encherBaralho(){
@@ -140,5 +141,6 @@ public class Baralho {
                 }
             }
         }
+        System.out.println("Baralho foi colocado em ordem.");
     }
 }

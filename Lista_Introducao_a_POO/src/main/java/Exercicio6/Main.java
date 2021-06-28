@@ -14,6 +14,7 @@ public class Main {
         Baralho baralho = new Baralho();
         baralho.encherBaralho();
         baralho.embaralhar();
+        baralho.imprimir();
         baralho.colocarEmOrdem();
         baralho.imprimir();
     }
