@@ -19,4 +19,7 @@ public class PessoaJuridica extends Pessoa {
         this.faturamento = faturamento;
     }
     
+    public float getFaturamento(){
+        return this.faturamento;
+    }
 }

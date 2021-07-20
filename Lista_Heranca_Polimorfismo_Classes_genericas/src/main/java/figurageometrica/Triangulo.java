@@ -11,11 +11,13 @@ package figurageometrica;
  */
 public class Triangulo extends Retangulo {
     
+
     public Triangulo(float base, float altura){
-        this.base = base;
-        this.altura = altura;
+        super(base,altura);
+        //this.base = base;
+        //this.altura = altura;
     }
-    
+
     @Override
     public void calcularArea(){
         this.area = this.base*this.altura/2;

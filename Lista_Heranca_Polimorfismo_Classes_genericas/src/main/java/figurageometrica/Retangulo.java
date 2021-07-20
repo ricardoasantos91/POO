@@ -13,9 +13,9 @@ public class Retangulo extends Figura {
     protected float base;
     protected float altura;
     
-    public Retangulo(){
-        
-    }
+
+
+
     public Retangulo(float base, float altura){
         this.base = base;
         this.altura = altura;

@@ -12,10 +12,17 @@ package agenda;
 public class PessoaFisica extends Pessoa{
     protected String aniversario;
     
+    public PessoaFisica(){
+        
+    }
     public PessoaFisica(String nome, String cpf, String endereco, String aniversario){
         this.nome = nome;
         this.identificacao = cpf;
         this.endereco = endereco;
         this.aniversario = aniversario;
+    }
+    
+    public String getAniversario(){
+        return this.aniversario;
     }
 }

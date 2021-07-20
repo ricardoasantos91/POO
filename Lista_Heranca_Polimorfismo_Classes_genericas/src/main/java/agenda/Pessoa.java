@@ -12,7 +12,17 @@ package agenda;
 public class Pessoa {
     protected String endereco;
     protected String nome;
-    protected String tipo;
     protected String identificacao;
     
+    public String getNome(){
+        return this.nome;
+    }
+    
+    public String getEndereco(){
+        return this.endereco;
+    }
+    
+    public String getIdentificacao(){
+        return this.identificacao;
+    }
 }
