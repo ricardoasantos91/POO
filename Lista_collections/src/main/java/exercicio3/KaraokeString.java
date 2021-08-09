@@ -6,26 +6,22 @@
 package exercicio3;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
-import java.util.TreeSet;
 
 /**
  *
  * @author Sala
  */
-
-
-public class Karaoke {
-    Set<Musica> musicas = new TreeSet<Musica>();
-    Set<Artista> musicas_autores = new TreeSet<Artista>();
-    List<Musica> fila_musica = new ArrayList();
+public class KaraokeString {
+    Map<String,List<String>> musicas = new TreeMap();
+    Map<String,List<String>> musicas_autores = new TreeMap();
+    List<String> fila_musica = new ArrayList();
+    List<String> fila_autores = new ArrayList();
     
     
     public void menu(){
@@ -71,42 +67,34 @@ public class Karaoke {
     
 
     public void addMusic(){
-        Scanner teclado = new Scanner(System.in);
-
+        Scanner teclado = new Scanner(System.in).useDelimiter("\n");
+        System.out.println("Qual o nome da música?");
+        
+        String musica = teclado.nextLine();
         
         System.out.println("Qual o nome do artista?");
         
-        String nome_artista = teclado.nextLine();
+        String artista = teclado.nextLine();        
         
-        System.out.println("Qual o nome da música?");
-        
-        String nome_musica = teclado.nextLine();
-        
-        int i = 0;
-        for (Artista item: musicas_autores){
-
-
-            if (item.getNome().equals(nome_artista)){
-
-                Musica musica = new Musica(nome_musica,item);
-                item.addMusica(musica);
-                i++;
-                musicas.add(musica);
-            } 
+        List c = musicas.getOrDefault(musica, null);
+        if (c == null){
+            List<String> d = new ArrayList();
+            d.add(artista);
+            musicas.put(musica,d);
+        }else{
+            c.add(artista);
+            musicas.put(musica,c);
         }
-                
-        if (i == 0){
-            Artista artista = new Artista(nome_artista);     
-            Musica musica = new Musica(nome_musica,artista);
-            artista.addMusica(musica);
-            musicas_autores.add(artista);
-            musicas.add(musica);
+        
+        List a = musicas_autores.getOrDefault(artista, null);
+        if (a == null){
+            List<String> b = new ArrayList();
+            b.add(musica);
+            musicas_autores.put(artista,b);
+        }else{
+            a.add(musica);
+            musicas_autores.put(artista,a);
         }
-
-        
-        
-
-        
     }
     
     public void imprimirFila(){
@@ -114,7 +102,7 @@ public class Karaoke {
         if (fila_musica.size() > 0){
             
         for(int i = 0; i < fila_musica.size(); i++){
-            System.out.println("Posição " + (i+1) + " Música: " + fila_musica.get(i).getNome() + " Artista: " + fila_musica.get(i).getArtist());
+            System.out.println("Posição " + (i+1) + " Música: " + fila_musica.get(i) + " Artista: " + fila_autores.get(i));
         }
         }else{
             System.out.println("Não há nenhuma música na fila");
@@ -122,16 +110,14 @@ public class Karaoke {
     }
     
     public void buscar_artista(){
-        List<Artista> artistas = new ArrayList();
-        List<Musica> musicas = new ArrayList();
+        List<String> artistas = new ArrayList();
+        List<String> musicas = new ArrayList();
         int i;
         i = 1;
         System.out.println("Selecione a música:");
-        for(Artista artista : musicas_autores){
-
-            //Set<Musica> musicas_atuais = artista.getMusicas();
-            for(Musica item: artista.musicas){
-                System.out.println(i + ": Artista: " + artista.getNome() + " Música: " + item.getNome());
+        for(String artista : musicas_autores.keySet()){
+            for(String item: musicas_autores.get(artista)){
+                System.out.println(i + ": Artista: " + artista + " Música: " + item);
                 artistas.add(artista);
                 musicas.add(item);
                 i++;
@@ -143,7 +129,7 @@ public class Karaoke {
         n = teclado.nextInt();
         
         fila_musica.add(musicas.get(n-1));
-
+        fila_autores.add(artistas.get(n-1));
        
         
         
@@ -174,36 +160,37 @@ public class Karaoke {
     
     
     public void buscar_musica(){
-        List<Artista> artistas = new ArrayList();
-        List<Musica> musicas_lista = new ArrayList();
+        List<String> artistas = new ArrayList();
+        List<String> musicas_lista = new ArrayList();
         int i;
         i = 1;
         System.out.println("Selecione a música:");
-        for(Musica musica : musicas){
-            String artista_atual = musica.getArtist();
-
-            System.out.println(i + ": Música: " + musica.getNome() + " Artista: " + artista_atual);
-            artistas.add(musica.getArtistObject());
-            musicas_lista.add(musica);
-            i++;
+        for(String musica : musicas.keySet()){
+            for(String item: musicas.get(musica)){
+                System.out.println(i + ": Música: " + musica + " Artista: " + item);
+                artistas.add(item);
+                musicas_lista.add(musica);
+                i++;
             }
-        
+        }
         
         Scanner teclado = new Scanner(System.in);
         int n;
         n = teclado.nextInt();
         
         fila_musica.add(musicas_lista.get(n-1));
+        fila_autores.add(artistas.get(n-1));
     
     }
     
-    
     public void cantar(){
         if (fila_musica.size() > 0){
-            Musica musica = fila_musica.get(0);
+            String musica = fila_musica.get(0);
+            String autor = fila_autores.get(0);
             
-            System.out.println("A música " + musica.getNome() + " do artista " + musica.getArtist() + " foi cantada.");
+            System.out.println("A música " + musica + " do artista " + autor + " foi cantada.");
             fila_musica.remove(0);
+            fila_autores.remove(0);
         }else{
             System.out.println("Não há música na fila");
         }
@@ -211,4 +198,3 @@ public class Karaoke {
     
 }
 }
-

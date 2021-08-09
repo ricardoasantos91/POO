@@ -7,6 +7,7 @@ package servicocomputadores.registrorecebimentos;
 
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 import servicocomputadores.recebivel.Recebivel;
@@ -20,9 +21,10 @@ import servicocomputadores.recebivel.servico.Servico;
 public class RegistroRecebimentos {
     public static void main(String[] args){
         
-        ArrayList<Recebivel> registros = new ArrayList<Recebivel>();
+        List<Recebivel> registros = new ArrayList<Recebivel>();
         
         Scanner teclado = new Scanner(System.in).useLocale(Locale.US);
+        //teclado.useDelimiter("\n");
         Scanner scanner = new Scanner(System.in).useDelimiter("\n");
         int n;
         

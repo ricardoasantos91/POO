@@ -24,7 +24,7 @@ public class Main {
         mylist.add("Teste");
         mylist.add("POO");
         mylist.add("Palavras");
-
+        mylist.add("Palavras");
         
         String lista = mylist.toString();
         
