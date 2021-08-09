@@ -3,12 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package conjunto;
+package exercicio3;
 
 /**
  *
  * @author Sala
  */
-public class MyHashSet {
-    
+public class Main {
+    public static void main(String[] args){
+        Karaoke karaoke = new Karaoke();
+        
+        karaoke.menu();
+        
+        
+    }
 }
