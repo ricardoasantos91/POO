@@ -9,9 +9,9 @@ public class Main {
     File pessoaArquivo = new File("PessoaArquivo.bin");
 
     CadastroPessoa cadastroPessoa = PessoaArquivo.lerArquivo(pessoaArquivo);
-    
-    Pessoa pessoa = cadastroPessoa.buscarPorCpf("123");
-    pessoa.print();
+    //CadastroPessoa cadastroPessoa = new CadastroPessoa();
+    //Pessoa pessoa = cadastroPessoa.buscarPorCpf("123");
+    //pessoa.print();
     try{
       Tela.exibirMenu(cadastroPessoa);
     }

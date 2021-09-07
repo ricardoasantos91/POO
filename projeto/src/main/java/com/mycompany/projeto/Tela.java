@@ -4,10 +4,11 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Tela{
-  private static Scanner scan = new Scanner(System.in);
-
+  
   public static void exibirMenu(CadastroPessoa cadastro){
-    scan.useDelimiter("\n");
+      Scanner scan = new Scanner(System.in);
+
+      scan.useDelimiter("\n");
 
     System.out.println("Escolha uma opção:\n");
     System.out.println("1 - Abrir um novo chamado");
@@ -34,7 +35,9 @@ public class Tela{
   }
 
   public static void exibirMenuAdministracao(CadastroPessoa cadastro){
-    System.out.println("Escolha uma opção:\n");
+    Scanner scan = new Scanner(System.in);
+    scan.useDelimiter("\n");
+      System.out.println("Escolha uma opção:");
     System.out.println("1 - Cadastrar cliente");
     System.out.println("2 - Cadastrar atendente");
     System.out.println("3 - Cadastrar equipamento");
@@ -79,7 +82,7 @@ public class Tela{
           cadastro.inserir(cliente);
         }
         catch(Exception e){
-
+            System.out.println("erro");
         }
         exibirMenuAdministracao(cadastro);
       case 2:
@@ -117,10 +120,10 @@ public class Tela{
         }
         exibirMenuAdministracao(cadastro);
       case 3:
-        System.out.println("Insira o tipo de equipamento:\n");
+        System.out.println("Insira o tipo de equipamento:");
         String tipo = scan.nextLine();
 
-        System.out.println("Insira a data de instalação:\n");
+        System.out.println("Insira a data de instalação:");
         String data3 = scan.nextLine();
 
         Equipamento equipamento = new Equipamento(CadastroEquipamento.numEquipamentos(), TipoEquipamento.valueOf(tipo), data3);
@@ -136,7 +139,7 @@ public class Tela{
       case 4:
         scan.nextLine();
 
-        System.out.println("Insira o CPF da pessoa que deseja buscar:\n");
+        System.out.println("Insira o CPF da pessoa que deseja buscar:");
         String cpfB = scan.nextLine();
 
         try{

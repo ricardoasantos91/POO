@@ -1,7 +1,8 @@
 package com.mycompany.projeto;
+import java.io.Serializable;
 import java.util.List;
 
-public abstract class Pessoa{
+public abstract class Pessoa implements Serializable{
   private String nome;
   private String cpf;
   private String data_nasc;

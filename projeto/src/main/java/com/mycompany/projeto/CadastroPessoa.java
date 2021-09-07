@@ -9,15 +9,17 @@ public class CadastroPessoa implements Serializable{
   public void inserir(Pessoa pessoa) throws Exception {
     int i = 0;
     try{
+        System.out.println("CARALHO2");
       buscarPorCpf(pessoa.getCpf());
     }
     catch(Exception e){
-      //System.out.println(e.getMessage());
+      System.out.println("asaasss");
       pessoas.add(pessoa);
 
       i = 1;
     }
     if(i == 0){
+      System.out.println("CARALHO");
       throw new Exception("PESSOA JÁ EXISTE!");
     }
     

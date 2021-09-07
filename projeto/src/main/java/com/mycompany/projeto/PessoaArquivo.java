@@ -34,13 +34,16 @@ public class PessoaArquivo{
                 ObjectInputStream objStream = new ObjectInputStream(fileStream);
                 try{
                     pessoas = (CadastroPessoa) objStream.readObject();
+                    System.out.println("teste7");
                     return pessoas;
                 }catch(Exception e){
+                   System.out.println("teste4");
                     e.printStackTrace();
                 }
                     
                 objStream.close();
             }catch(IOException e){
+                System.out.println("teste3");
                 e.printStackTrace();
             }
             
@@ -51,6 +54,7 @@ public class PessoaArquivo{
       return pessoas;
     }
     catch(IOException e){
+      System.out.println("teste2");
       e.printStackTrace();
     }
     return pessoas;
