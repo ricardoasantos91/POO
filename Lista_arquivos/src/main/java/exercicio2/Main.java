@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Scanner;
 /**
  *
  * @author Sala
@@ -21,35 +22,51 @@ public class Main {
     Funcionario funcionario2 = new Funcionario(51,"Jonathas",31,22);
     Funcionario funcionario3 = new Funcionario(52,"Camila",32,23);
     
-    File file = new File("input.txt");
+    CadastroFuncionario funcionarios = new CadastroFuncionario();
+    
+    funcionarios.inserirFuncionario(funcionario1);
+    funcionarios.inserirFuncionario(funcionario2);
+    funcionarios.inserirFuncionario(funcionario3);
+    
+    
+    File file = new File("input.bin");
     try (FileOutputStream fos = new FileOutputStream(file)){
         
         ObjectOutputStream oos = new ObjectOutputStream(fos);
 
-            oos.writeObject(funcionario1);
-            oos.writeObject(funcionario2);
-            oos.writeObject(funcionario3);
-    
+            oos.writeObject(funcionarios);
+            //oos.writeObject(funcionario2);
+            //oos.writeObject(funcionario3);
+
+            oos.close();
+            fos.close();
     }catch (IOException e) {
                 e.printStackTrace();
             }
-    File file2 = new File("input.txt");
-    Funcionario  funcionario = funcionarioSearch(file2);
-    
+
+    Funcionario  funcionario = funcionarioSearch(file);
+    System.out.println(funcionario.getNome());
 }
     
     public static Funcionario funcionarioSearch(File file) {
         
+        Scanner teclado = new Scanner(System.in);
+        String nome;
+        nome = teclado.nextLine();
+        
         try(FileInputStream fileStream = new FileInputStream(file)){
             // Creating an object input stream
             try(ObjectInputStream objStream = new ObjectInputStream(fileStream)){
-                while(true){
-                    try(Class funcionario = objStream.readObject()){
-                    System.out.println(funcionario.getNome());
-                    }catch(Exception e){
-                        break;
-                    }
-                    }
+                
+                try{
+                    CadastroFuncionario funcionarios = (CadastroFuncionario) objStream.readObject();
+                    Funcionario funcionario = funcionarios.buscarFuncionario(nome);
+                    return funcionario;
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+                    
+                objStream.close();
             }catch(IOException e){
                 e.printStackTrace();
             }catch(ClassNotFoundException e){
